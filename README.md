@@ -14,7 +14,7 @@ Installed Kali Linux environment
 Lab Setup
 Network Diagram
 lua
-Copy code
+
 +------------------+       +------------------+
 |   Attacker       | <----> |   Vulnerable App  |
 | (Kali Linux)     |        | (OWASP Juice Shop)|
@@ -23,21 +23,19 @@ Copy code
 Setting Up OWASP Juice Shop
 Install Docker:
 
-bash
-Copy code
+
 sudo apt-get update
 sudo apt-get install docker.io
 sudo systemctl start docker
 sudo systemctl enable docker
 Pull Juice Shop Docker Image:
 
-bash
-Copy code
+
 sudo docker pull bkimminich/juice-shop
 Run Juice Shop Container:
 
-bash
-Copy code
+
+
 sudo docker run -d -p 3000:3000 bkimminich/juice-shop
 Access Juice Shop:
 
@@ -62,8 +60,7 @@ Open a terminal on Kali Linux.
 
 Scan the server using Nmap:
 
-bash
-Copy code
+
 nmap 192.168.1.100
 Goal: Discover open ports and services running on the OWASP Juice Shop server.
 
@@ -77,7 +74,7 @@ Intercept a login request.
 Input the following payload:
 
 pgsql
-Copy code
+
 Username: ' OR '1'='1
 Password: ' OR '1'='1
 Goal: Bypass authentication using SQL Injection.
@@ -90,7 +87,7 @@ Find a user input field (e.g., search bar).
 Insert a basic XSS payload:
 
 html
-Copy code
+
 <script>alert('XSS')</script>
 Goal: Trigger an alert box, confirming a reflected XSS vulnerability.
 
@@ -111,7 +108,7 @@ Intercept a request with Burp Suite.
 Modify parameters to attempt path traversal:
 
 bash
-Copy code
+
 ../../../etc/passwd
 Goal: Access sensitive files outside the web root directory.
 
